@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <header>
+    <h1>Weather Dashboard</h1>
+  </header>
+
+  <main>
+
+    <!-- Search Bar -->
+    <section class="search-section" aria-label="City search">
+      <form id="search-form" role="search">
+        <input
+          type="text"
+          id="city-input"
+          name="city"
+          placeholder="Enter city name..."
+          autocomplete="off"
+          aria-label="City name"
+          required
+        />
+        <button type="submit" aria-label="Search weather">Search</button>
+      </form>
+      <p id="error-message" class="error" role="alert" aria-live="polite" hidden></p>
+    </section>
+
+    <!-- Weather Results -->
+    <section id="weather-result" class="weather-card" aria-label="Weather results" hidden>
+
+      <div class="weather-header">
+        <h2 id="city-name"></h2>
+        <img id="weather-icon" src="" alt="" />
+      </div>
+
+      <p id="weather-condition" class="condition"></p>
+
+      <div class="weather-stats">
+        <div class="stat">
+          <span class="stat-label">Temperature</span>
+          <span id="temperature" class="stat-value"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Humidity</span>
+          <span id="humidity" class="stat-value"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Wind Speed</span>
+          <span id="wind-speed" class="stat-value"></span>
+        </div>
+      </div>
+
+      <div class="unit-toggle">
+        <label>
+          <input type="radio" name="unit" value="metric" checked /> °C
+        </label>
+        <label>
+          <input type="radio" name="unit" value="imperial" /> °F
+        </label>
+      </div>
+
+    </section>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading" aria-live="polite" hidden>
+      <span>Loading...</span>
+    </div>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
